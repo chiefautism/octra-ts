@@ -1,0 +1,67 @@
+{
+  "name": "octra-ts",
+  "version": "0.1.0",
+  "description": "Lightweight, composable, type-safe TypeScript client for the Octra JSON-RPC API.",
+  "type": "module",
+  "license": "MIT",
+  "sideEffects": false,
+  "bin": {
+    "octra": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "docs",
+    "examples",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./accounts": {
+      "types": "./dist/accounts/index.d.ts",
+      "import": "./dist/accounts/index.js"
+    },
+    "./adapters": {
+      "types": "./dist/adapters/index.d.ts",
+      "import": "./dist/adapters/index.js"
+    },
+    "./adapters/browser": {
+      "types": "./dist/adapters/browser.d.ts",
+      "import": "./dist/adapters/browser.js"
+    },
+    "./contract": {
+      "types": "./dist/contract/index.d.ts",
+      "import": "./dist/contract/index.js"
+    },
+    "./pvac": {
+      "types": "./dist/pvac/index.d.ts",
+      "import": "./dist/pvac/index.js"
+    },
+    "./transports": {
+      "types": "./dist/transports/index.d.ts",
+      "import": "./dist/transports/index.js"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "import": "./dist/utils/index.js"
+    }
+  },
+  "scripts": {
+    "bench": "bun scripts/benchmark.mjs",
+    "bench:pvac": "bun scripts/benchmark.mjs --pvac",
+    "broadcast:test": "OCTRA_BROADCAST=1 bun test test/broadcast.integration.test.ts",
+    "build": "tsc -p tsconfig.json && bun scripts/copy-pvac-assets.mjs",
+    "check": "bun test && bun run build",
+    "pack:smoke": "bun scripts/pack-smoke.mjs",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.8.0"
+  },
+  "dependencies": {
+    "tweetnacl": "^1.0.3"
+  }
+}

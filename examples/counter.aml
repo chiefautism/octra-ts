@@ -1,0 +1,23 @@
+contract Counter {
+  state {
+    owner: address
+    count: int
+  }
+
+  event Incremented(by: address, value: int)
+
+  constructor() {
+    self.owner = origin
+    self.count = 0
+  }
+
+  fn inc(): int {
+    self.count += 1
+    emit Incremented(caller, self.count)
+    return self.count
+  }
+
+  view fn get(): int {
+    return self.count
+  }
+}
