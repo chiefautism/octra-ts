@@ -1,4 +1,6 @@
-# octra-ts
+# octra-ts 
+
+warning: experimental slop
 
 Viem-style TypeScript client for Octra JSON-RPC 2.0.
 
